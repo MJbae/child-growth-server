@@ -26,7 +26,13 @@ class HeightAnalysisControllerTest {
         @Test
         @DisplayName("HTTP Status Code 200 OK 응답한다")
         void it_responds_with_200_ok() throws Exception {
-            mockMvc.perform(get("/height/range"))
+            mockMvc.perform(get("/height/range")
+                            .param("year", "1991")
+                            .param("month", "3")
+                            .param("day", "26")
+                            .param("sex", "male")
+                            .param("height", "179.5")
+                    )
                     .andExpect(status().isOk());
         }
     }
