@@ -1,4 +1,4 @@
-package mj.childGrowth.controller;
+package mj.childGrowth.controller.dto;
 
 import lombok.Getter;
 
