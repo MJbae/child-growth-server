@@ -36,9 +36,9 @@ class HeightAnalysisControllerTest {
     class Describe_range {
         @BeforeEach
         void setUp() {
-//            analysis = new HeightAnalysis(1, "male", 1, 10, 173);
+            analysis = new HeightAnalysis((long) 1, "male", 1, 10, (float) 173);
             given(repository.findAllByMonthAndSexAndHeight(227, (float) 179.5, "male"))
-                    .willReturn(List.of());
+                    .willReturn(List.of(analysis));
         }
 
         @Test
