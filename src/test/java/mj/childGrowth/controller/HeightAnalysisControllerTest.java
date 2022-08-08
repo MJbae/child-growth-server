@@ -37,7 +37,7 @@ class HeightAnalysisControllerTest {
         @BeforeEach
         void setUp() {
 //            analysis = new HeightAnalysis(1, "male", 1, 10, 173);
-            given(repository.findAllByYearAndMonthAndDayAndSexAndHeight(1991, 3, 26, (float) 179.5, "male"))
+            given(repository.findAllByMonthAndSexAndHeight(227, (float) 179.5, "male"))
                     .willReturn(List.of());
         }
 
@@ -45,9 +45,7 @@ class HeightAnalysisControllerTest {
         @DisplayName("HTTP Status Code 200 OK 응답한다")
         void it_responds_with_200_ok() throws Exception {
             mockMvc.perform(get("/height/range")
-                            .param("year", "1991")
-                            .param("month", "3")
-                            .param("day", "26")
+                            .param("monthAfterBirth", "227")
                             .param("sex", "male")
                             .param("height", "179.5")
                     )

@@ -19,12 +19,11 @@ public class HeightAnalysisController {
     }
 
     @RequestMapping("/height/range")
-    public AnalysisResponseData range(@RequestParam Integer year, @RequestParam Integer month,
-                                      @RequestParam Integer day, @RequestParam Float height,
+    public AnalysisResponseData range(@RequestParam Integer monthAfterBirth, @RequestParam Float height,
                                       @RequestParam String sex) {
 
         Integer RANGE_INDEX = 1;
-        List<HeightResponseData> range = repository.findAllByYearAndMonthAndDayAndSexAndHeight(year, month, day, height, sex)
+        List<HeightResponseData> range = repository.findAllByMonthAndSexAndHeight(monthAfterBirth, height, sex)
                 .stream().map(heightAnalysis -> new HeightResponseData(heightAnalysis.getPercentile(), heightAnalysis.getHeight()))
                 .collect(Collectors.toList());
 
