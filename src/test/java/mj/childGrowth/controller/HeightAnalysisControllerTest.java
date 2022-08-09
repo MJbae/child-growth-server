@@ -29,16 +29,19 @@ class HeightAnalysisControllerTest {
     @MockBean
     private HeightAnalysisRepository repository;
 
-    private HeightAnalysis analysis;
-
     @Nested
     @DisplayName("range 메소드는")
     class Describe_range {
         @BeforeEach
         void setUp() {
-            analysis = new HeightAnalysis((long) 1, "male", 1, 10, (float) 173);
+            HeightAnalysis firstAnalysis = new HeightAnalysis((long) 1, "male", 227, 10, (float) 167.5);
+            HeightAnalysis secondAnalysis = new HeightAnalysis((long) 2, "male", 227, 25, (float) 170.8);
+            HeightAnalysis thirdAnalysis = new HeightAnalysis((long) 3, "male", 227, 50, (float) 174.5);
+            HeightAnalysis forthAnalysis = new HeightAnalysis((long) 4, "male", 227, 75, (float) 180.4);
+            HeightAnalysis fifthAnalysis = new HeightAnalysis((long) 5, "male", 227, 90, (float) 183.9);
+
             given(repository.findAllByMonthAndSexAndHeight(227, (float) 179.5, "male"))
-                    .willReturn(List.of(analysis));
+                    .willReturn(List.of(firstAnalysis, secondAnalysis, thirdAnalysis, forthAnalysis, fifthAnalysis));
         }
 
         @Test
