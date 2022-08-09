@@ -1,7 +1,7 @@
 package mj.childGrowth.controller;
 
-import mj.childGrowth.domain.HeightAnalysis;
-import mj.childGrowth.domain.HeightAnalysisRepository;
+import mj.childGrowth.application.HeightAnalysisService;
+import mj.childGrowth.controller.dto.HeightResponseData;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -27,21 +27,25 @@ class HeightAnalysisControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private HeightAnalysisRepository repository;
+    private HeightAnalysisService service;
 
     @Nested
     @DisplayName("range 메소드는")
     class Describe_range {
         @BeforeEach
         void setUp() {
-            HeightAnalysis firstAnalysis = new HeightAnalysis((long) 1, "male", 227, 10, (float) 167.5);
-            HeightAnalysis secondAnalysis = new HeightAnalysis((long) 2, "male", 227, 25, (float) 170.8);
-            HeightAnalysis thirdAnalysis = new HeightAnalysis((long) 3, "male", 227, 50, (float) 174.5);
-            HeightAnalysis forthAnalysis = new HeightAnalysis((long) 4, "male", 227, 75, (float) 180.4);
-            HeightAnalysis fifthAnalysis = new HeightAnalysis((long) 5, "male", 227, 90, (float) 183.9);
+            HeightResponseData firstAnalysis = new HeightResponseData(10, (float) 167.5);
+            HeightResponseData secondAnalysis = new HeightResponseData(25, (float) 170.8);
+            HeightResponseData thirdAnalysis = new HeightResponseData(50, (float) 174.5);
+            HeightResponseData forthAnalysis = new HeightResponseData(75, (float) 180.4);
+            HeightResponseData fifthAnalysis = new HeightResponseData(90, (float) 183.9);
 
-            given(repository.findAllByMonthAndSexAndHeight(227, (float) 179.5, "male"))
+            given(service.showAllBy(227, (float) 179.5, "male"))
                     .willReturn(List.of(firstAnalysis, secondAnalysis, thirdAnalysis, forthAnalysis, fifthAnalysis));
+
+
+            given(service.getRangeIndex((float) 179.5, List.of(firstAnalysis, secondAnalysis, thirdAnalysis, forthAnalysis, fifthAnalysis)))
+                    .willReturn(3);
         }
 
         @Test
