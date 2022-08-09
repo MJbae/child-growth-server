@@ -18,6 +18,11 @@ import static org.mockito.Mockito.mock;
 class HeightAnalysisServiceTest {
     private HeightAnalysisService service;
     private final HeightAnalysisRepository repository = mock(HeightAnalysisRepository.class);
+    private final float FIRST_HEIGHT = (float) 167.5;
+    private final float SECOND_HEIGHT = (float) 170.8;
+    private final float THIRD_HEIGHT = (float) 174.5;
+    private final float FORTH_HEIGHT = (float) 180.4;
+    private final float FIFTH_HEIGHT = (float) 183.9;
 
     @BeforeEach
     void setUp() {
@@ -53,11 +58,11 @@ class HeightAnalysisServiceTest {
         class Context_with_existing_heightAnalysis {
             @BeforeEach
             void setUp() {
-                HeightAnalysis firstAnalysis = new HeightAnalysis((long) 1, "male", 227, 10, (float) 167.5);
-                HeightAnalysis secondAnalysis = new HeightAnalysis((long) 2, "male", 227, 25, (float) 170.8);
-                HeightAnalysis thirdAnalysis = new HeightAnalysis((long) 3, "male", 227, 50, (float) 174.5);
-                HeightAnalysis forthAnalysis = new HeightAnalysis((long) 4, "male", 227, 75, (float) 180.4);
-                HeightAnalysis fifthAnalysis = new HeightAnalysis((long) 5, "male", 227, 90, (float) 183.9);
+                HeightAnalysis firstAnalysis = new HeightAnalysis((long) 1, "male", 227, 10, FIRST_HEIGHT);
+                HeightAnalysis secondAnalysis = new HeightAnalysis((long) 2, "male", 227, 25, SECOND_HEIGHT);
+                HeightAnalysis thirdAnalysis = new HeightAnalysis((long) 3, "male", 227, 50, THIRD_HEIGHT);
+                HeightAnalysis forthAnalysis = new HeightAnalysis((long) 4, "male", 227, 75, FORTH_HEIGHT);
+                HeightAnalysis fifthAnalysis = new HeightAnalysis((long) 5, "male", 227, 90, FIFTH_HEIGHT);
 
                 given(repository.findAllByMonthAndSexAndHeight(227, (float) 179.5, "male"))
                         .willReturn(List.of(firstAnalysis, secondAnalysis, thirdAnalysis, forthAnalysis, fifthAnalysis));
@@ -71,6 +76,16 @@ class HeightAnalysisServiceTest {
             @DisplayName("비어 있지 않은 리스트를 반환한다")
             void it_returns_not_empty_list() {
                 assertThat(subject()).isNotEmpty();
+            }
+
+            @Test
+            @DisplayName("DB에서 가져온 Height 값과 동일한 값을 반환한다")
+            void it_returns_exact_height() {
+                assertThat(subject().get(0).getHeight()).isEqualTo(FIRST_HEIGHT);
+                assertThat(subject().get(1).getHeight()).isEqualTo(SECOND_HEIGHT);
+                assertThat(subject().get(2).getHeight()).isEqualTo(THIRD_HEIGHT);
+                assertThat(subject().get(3).getHeight()).isEqualTo(FORTH_HEIGHT);
+                assertThat(subject().get(4).getHeight()).isEqualTo(FIFTH_HEIGHT);
             }
         }
     }
