@@ -89,4 +89,24 @@ class HeightAnalysisServiceTest {
             }
         }
     }
+
+    @Nested
+    @DisplayName("getRangeIndex 메소드는")
+    class Describe_getRangeIndex {
+        private int subject() {
+            HeightResponseData firstData = new HeightResponseData(10, FIRST_HEIGHT);
+            HeightResponseData secondData = new HeightResponseData(25, SECOND_HEIGHT);
+            HeightResponseData thirdData = new HeightResponseData(50, THIRD_HEIGHT);
+            HeightResponseData forthData = new HeightResponseData(75, FORTH_HEIGHT);
+            HeightResponseData fifthData = new HeightResponseData(90, FIFTH_HEIGHT);
+
+            return service.getRangeIndex((float) 179.5, List.of(firstData, secondData, thirdData, forthData, fifthData));
+        }
+
+        @Test
+        @DisplayName("정확한 rangeIndex를 반환한다")
+        void it_returns_exact_rangeIndex() {
+            assertThat(subject()).isEqualTo(3);
+        }
+    }
 }
