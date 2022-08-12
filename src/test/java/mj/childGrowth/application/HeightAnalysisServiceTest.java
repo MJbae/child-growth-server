@@ -38,7 +38,7 @@ class HeightAnalysisServiceTest {
         class Context_without_heightAnalysis_from_db {
             @BeforeEach
             void setUp() {
-                given(repository.findAllByMonthAndSexAndHeight(227, (float) 179.5, "male"))
+                given(repository.findAllByMonthAndSex(227, "male"))
                         .willReturn(List.of());
             }
 
@@ -64,7 +64,7 @@ class HeightAnalysisServiceTest {
                 HeightAnalysis forthAnalysis = new HeightAnalysis((long) 4, "male", 227, 75, FORTH_HEIGHT);
                 HeightAnalysis fifthAnalysis = new HeightAnalysis((long) 5, "male", 227, 90, FIFTH_HEIGHT);
 
-                given(repository.findAllByMonthAndSexAndHeight(227, (float) 179.5, "male"))
+                given(repository.findAllByMonthAndSex(227, "male"))
                         .willReturn(List.of(firstAnalysis, secondAnalysis, thirdAnalysis, forthAnalysis, fifthAnalysis));
             }
 

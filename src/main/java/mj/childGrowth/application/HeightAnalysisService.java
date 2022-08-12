@@ -30,7 +30,7 @@ public class HeightAnalysisService {
     }
 
     public List<HeightResponseData> showAllBy(Integer monthAfterBirth, Float height, String sex) {
-        return repository.findAllByMonthAndSexAndHeight(monthAfterBirth, height, sex)
+        return repository.findAllByMonthAndSex(monthAfterBirth, sex)
                 .stream().map(heightAnalysis -> new HeightResponseData(heightAnalysis.getPercentile(), heightAnalysis.getHeight()))
                 .sorted(Comparator.comparingInt(HeightResponseData::getPercentile))
                 .collect(Collectors.toList());
