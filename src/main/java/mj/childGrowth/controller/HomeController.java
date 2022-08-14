@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HomeController {
     private final String WELCOME_MESSAGE = "Welcome to Child Growth API Server";
 
-    @RequestMapping("/")
+    @RequestMapping("/api/")
     public String welcomeMessage() {
         return WELCOME_MESSAGE;
     }

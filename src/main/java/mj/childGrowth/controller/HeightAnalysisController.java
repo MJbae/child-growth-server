@@ -17,7 +17,7 @@ public class HeightAnalysisController {
         this.service = service;
     }
 
-    @RequestMapping("/height/range")
+    @RequestMapping("/api/height/range")
     public AnalysisResponseData range(@RequestParam Integer monthAfterBirth, @RequestParam Float height,
                                       @RequestParam String sex) {
 
