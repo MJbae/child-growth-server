@@ -3,7 +3,7 @@
 ### Output
 * [Service URI](http://3.37.248.174/)
 * [API Docs](https://documenter.getpostman.com/view/17035275/VUjPHQhB#d69b2e32-db50-4a73-b361-85b96b0ff98a)
-* [Service in detail]()
+* [Service in detail](https://studynote.oopy.io/projects/7)
 * [Web Front Github](https://github.com/welinhong/child-growth-client)
 ### Technologies Used
 * Application Framework: Java & SpringBoot
