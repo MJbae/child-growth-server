@@ -3,12 +3,10 @@ package mj.childGrowth.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.core.annotation.Order;
 import org.springframework.web.filter.AbstractRequestLoggingFilter;
 
 import javax.servlet.http.HttpServletRequest;
 
-@Order(1)
 public class SpeedMeasuringFilter extends AbstractRequestLoggingFilter {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());

@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@Order(2)
 public class RequestLoggingFilter implements Filter {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
@@ -20,7 +19,6 @@ public class RequestLoggingFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
-        HttpServletResponse res = (HttpServletResponse) response;
 
         logger.info("Logging Request Parameters: height={}, monthAfterBirth={}, sex={}",
                 req.getParameter("height"), req.getParameter("monthAfterBirth"),
