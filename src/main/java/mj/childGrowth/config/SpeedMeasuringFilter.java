@@ -3,13 +3,13 @@ package mj.childGrowth.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.web.filter.AbstractRequestLoggingFilter;
 
 import javax.servlet.http.HttpServletRequest;
 
-@Configuration
-public class SpeedMeasurementFilter extends AbstractRequestLoggingFilter {
+@Order(1)
+public class SpeedMeasuringFilter extends AbstractRequestLoggingFilter {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
     final String REQUESTED_AT = "requestedAt";
