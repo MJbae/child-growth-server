@@ -29,13 +29,10 @@ public class RequestLoggingAspect {
     @Around("mj.childGrowth.config.RequestLoggingAspect.onRequest()")
     public Object requestLogging(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-        long start = System.currentTimeMillis();
         try {
             return proceedingJoinPoint.proceed(proceedingJoinPoint.getArgs());
         } finally {
-            long end = System.currentTimeMillis();
             logger.info("Logging Request Parameters in Aspect: {}", paramMapToString(request.getParameterMap()));
-            logger.info("Request analysis in Aspect: {} {}: ({}ms)", request.getMethod(), request.getRequestURL(), end - start);
         }
     }
 
