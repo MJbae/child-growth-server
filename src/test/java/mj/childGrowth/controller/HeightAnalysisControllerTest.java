@@ -2,6 +2,7 @@ package mj.childGrowth.controller;
 
 import mj.childGrowth.application.HeightAnalysisService;
 import mj.childGrowth.controller.dto.HeightResponseData;
+import mj.childGrowth.domain.Sex;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -40,7 +41,7 @@ class HeightAnalysisControllerTest {
             HeightResponseData forthAnalysis = new HeightResponseData(75, (float) 180.4);
             HeightResponseData fifthAnalysis = new HeightResponseData(90, (float) 183.9);
 
-            given(service.showAllBy(227, (float) 179.5, "male"))
+            given(service.showAllBy(227, (float) 179.5, Sex.MALE))
                     .willReturn(List.of(firstAnalysis, secondAnalysis, thirdAnalysis, forthAnalysis, fifthAnalysis));
 
 

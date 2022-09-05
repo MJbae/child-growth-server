@@ -2,6 +2,7 @@ package mj.childGrowth.application;
 
 import mj.childGrowth.controller.dto.HeightResponseData;
 import mj.childGrowth.domain.HeightAnalysisRepository;
+import mj.childGrowth.domain.Sex;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,7 +30,7 @@ public class HeightAnalysisService {
         return rangeIndex;
     }
 
-    public List<HeightResponseData> showAllBy(Integer monthAfterBirth, Float height, String sex) {
+    public List<HeightResponseData> showAllBy(Integer monthAfterBirth, Float height, Sex sex) {
         return repository.findAllByMonthAndSex(monthAfterBirth, sex)
                 .stream().map(heightAnalysis -> new HeightResponseData(heightAnalysis.getPercentile(), heightAnalysis.getHeight()))
                 .sorted(Comparator.comparingInt(HeightResponseData::getPercentile))

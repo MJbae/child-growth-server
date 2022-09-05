@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static mj.childGrowth.domain.Sex.MALE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
@@ -38,12 +39,12 @@ class HeightAnalysisServiceTest {
         class Context_without_heightAnalysis_from_db {
             @BeforeEach
             void setUp() {
-                given(repository.findAllByMonthAndSex(227, "male"))
+                given(repository.findAllByMonthAndSex(227, MALE))
                         .willReturn(List.of());
             }
 
             private List<HeightResponseData> subject() {
-                return service.showAllBy(227, (float) 179.5, "male");
+                return service.showAllBy(227, (float) 179.5, MALE);
             }
 
             @Test
@@ -58,18 +59,18 @@ class HeightAnalysisServiceTest {
         class Context_with_existing_heightAnalysis {
             @BeforeEach
             void setUp() {
-                HeightAnalysis firstAnalysis = new HeightAnalysis((long) 1, "male", 227, 10, FIRST_HEIGHT);
-                HeightAnalysis secondAnalysis = new HeightAnalysis((long) 2, "male", 227, 25, SECOND_HEIGHT);
-                HeightAnalysis thirdAnalysis = new HeightAnalysis((long) 3, "male", 227, 50, THIRD_HEIGHT);
-                HeightAnalysis forthAnalysis = new HeightAnalysis((long) 4, "male", 227, 75, FORTH_HEIGHT);
-                HeightAnalysis fifthAnalysis = new HeightAnalysis((long) 5, "male", 227, 90, FIFTH_HEIGHT);
+                HeightAnalysis firstAnalysis = new HeightAnalysis((long) 1, MALE, 227, 10, FIRST_HEIGHT);
+                HeightAnalysis secondAnalysis = new HeightAnalysis((long) 2, MALE, 227, 25, SECOND_HEIGHT);
+                HeightAnalysis thirdAnalysis = new HeightAnalysis((long) 3, MALE, 227, 50, THIRD_HEIGHT);
+                HeightAnalysis forthAnalysis = new HeightAnalysis((long) 4, MALE, 227, 75, FORTH_HEIGHT);
+                HeightAnalysis fifthAnalysis = new HeightAnalysis((long) 5, MALE, 227, 90, FIFTH_HEIGHT);
 
-                given(repository.findAllByMonthAndSex(227, "male"))
+                given(repository.findAllByMonthAndSex(227, MALE))
                         .willReturn(List.of(firstAnalysis, secondAnalysis, thirdAnalysis, forthAnalysis, fifthAnalysis));
             }
 
             private List<HeightResponseData> subject() {
-                return service.showAllBy(227, (float) 179.5, "male");
+                return service.showAllBy(227, (float) 179.5, MALE);
             }
 
             @Test

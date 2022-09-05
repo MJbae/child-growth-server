@@ -3,10 +3,7 @@ package mj.childGrowth.domain;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Table(name = "height_analysis")
 @Entity
@@ -17,7 +14,8 @@ public class HeightAnalysis {
     @GeneratedValue
     private Long id;
 
-    private String sex;
+    @Enumerated(EnumType.STRING)
+    private Sex sex;
 
     private Integer month;
 
@@ -25,7 +23,7 @@ public class HeightAnalysis {
 
     private Float height;
 
-    public HeightAnalysis(Long id, String sex, Integer month, Integer percentile, Float height) {
+    public HeightAnalysis(Long id, Sex sex, Integer month, Integer percentile, Float height) {
         this.id = id;
         this.sex = sex;
         this.month = month;
@@ -33,7 +31,7 @@ public class HeightAnalysis {
         this.height = height;
     }
 
-    public HeightAnalysis(String sex, Integer month, Integer percentile, Float height) {
+    public HeightAnalysis(Sex sex, Integer month, Integer percentile, Float height) {
         this.sex = sex;
         this.month = month;
         this.percentile = percentile;

@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `growth_analysis`.`height_analysis`
     `height`       FLOAT NOT NULL,
     `month` INT(11) NULL     DEFAULT NULL,
     `percentile`    INT(11)        NULL     DEFAULT NULL,
-    `sex`      VARCHAR(255)  NOT NULL DEFAULT 'male',
+    `sex`      VARCHAR(255)  NOT NULL DEFAULT 'MALE',
     PRIMARY KEY (`id`)
 )
 ENGINE = InnoDB
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `growth_analysis`.`height_range_request_log`
     `height`       FLOAT NOT NULL,
     `month` INT(11) NULL     DEFAULT NULL,
     `created_at`    DATETIME     NULL     DEFAULT NULL,
-    `sex`      VARCHAR(255)  NOT NULL DEFAULT 'male',
+    `sex`      VARCHAR(255)  NOT NULL DEFAULT 'MALE',
     PRIMARY KEY (`id`)
 )
 ENGINE = InnoDB
