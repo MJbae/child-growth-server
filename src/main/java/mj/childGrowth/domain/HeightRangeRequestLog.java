@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class HeightRangeRequestLog {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Integer month;
