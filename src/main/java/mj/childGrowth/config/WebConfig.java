@@ -22,4 +22,11 @@ public class WebConfig implements WebMvcConfigurer {
         return filterRegistrationBean;
 
     }
+
+    @Bean
+    public FilterRegistrationBean setSpeedMeasurementFilterRegistration() {
+        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(new SpeedMeasuringFilter());
+        filterRegistrationBean.setOrder(1);
+        return filterRegistrationBean;
+    }
 }
