@@ -2,6 +2,7 @@ package mj.childGrowth.controller;
 
 import mj.childGrowth.application.HeightAnalysisService;
 import mj.childGrowth.controller.dto.HeightResponseData;
+import mj.childGrowth.domain.HeightRangeRequestLogRepository;
 import mj.childGrowth.domain.Sex;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -29,6 +30,9 @@ class HeightAnalysisControllerTest {
 
     @MockBean
     private HeightAnalysisService service;
+
+    @MockBean
+    private HeightRangeRequestLogRepository repository;
 
     private final float FIRST_HEIGHT = (float) 167.5;
 
