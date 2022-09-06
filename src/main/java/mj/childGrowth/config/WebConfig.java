@@ -21,19 +21,4 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addInterceptor(new RequestLoggingInterceptor(repository))
                 .addPathPatterns("/api/height/**");
     }
-
-    @Bean
-    public FilterRegistrationBean setSpeedMeasurementFilterRegistration() {
-        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(new SpeedMeasuringFilter());
-        filterRegistrationBean.setOrder(1);
-        return filterRegistrationBean;
-    }
-
-    @Bean
-    public FilterRegistrationBean setRequestLoggingFilterRegistration() {
-        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(new RequestLoggingFilter());
-        filterRegistrationBean.addUrlPatterns("/api/height/*");
-        filterRegistrationBean.setOrder(2);
-        return filterRegistrationBean;
-    }
 }
