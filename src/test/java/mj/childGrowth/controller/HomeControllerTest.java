@@ -20,6 +20,7 @@ class HomeControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
+    private final String REQUEST_URL = "/api";
     private final String WELCOME_MESSAGE = "Welcome to Child Growth API Server";
 
     @Nested
@@ -28,14 +29,14 @@ class HomeControllerTest {
         @Test
         @DisplayName("HTTP Status Code 200 OK로 응답한다")
         void it_responds_with_200_ok() throws Exception {
-            mockMvc.perform(get("/"))
+            mockMvc.perform(get(REQUEST_URL))
                     .andExpect(status().isOk());
         }
 
         @Test
         @DisplayName("환영메시지를 반환한다")
         void it_returns_welcome_message() throws Exception {
-            mockMvc.perform(get("/"))
+            mockMvc.perform(get(REQUEST_URL))
                     .andExpect(content().string(containsString(WELCOME_MESSAGE)));
         }
     }
