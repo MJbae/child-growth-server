@@ -1,6 +1,9 @@
 package mj.childGrowth.config;
 
 
+import mj.childGrowth.domain.HeightRangeRequestLog;
+import mj.childGrowth.domain.HeightRangeRequestLogRepository;
+import mj.childGrowth.domain.Sex;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -19,8 +22,12 @@ import java.util.stream.Collectors;
 @Aspect
 @Component
 public class RequestLoggingAspect {
-
+    private final HeightRangeRequestLogRepository repository;
     private final Logger logger = LoggerFactory.getLogger(getClass());
+
+    RequestLoggingAspect(HeightRangeRequestLogRepository repository) {
+        this.repository = repository;
+    }
 
     @Pointcut("within(mj.childGrowth.controller.HeightAnalysisController)")
     public void onRequest() {
@@ -28,16 +35,18 @@ public class RequestLoggingAspect {
 
     @Around("mj.childGrowth.config.RequestLoggingAspect.onRequest()")
     public Object requestLogging(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-        logger.info("Logging Request Parameters in Aspect: {}", paramMapToString(request.getParameterMap()));
+        HttpServletRequest req = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
+
+        Float height = Float.parseFloat(req.getParameter("height"));
+        Integer monthAfterBirth = Integer.parseInt(req.getParameter("monthAfterBirth"));
+        Sex sex = Sex.valueOf(req.getParameter("sex").toUpperCase());
+
+        logger.info("Logging Request Parameters in Interceptor: height={}, monthAfterBirth={}, sex={}",
+                height, monthAfterBirth, sex);
+
+        repository.save(new HeightRangeRequestLog(height, monthAfterBirth, sex));
 
         return proceedingJoinPoint.proceed(proceedingJoinPoint.getArgs());
     }
 
-    private String paramMapToString(Map<String, String[]> paraStringMap) {
-        return paraStringMap.entrySet().stream()
-                .map(entry -> String.format("%s=%s",
-                        entry.getKey(), Arrays.toString(entry.getValue())))
-                .collect(Collectors.joining(", "));
-    }
 }
