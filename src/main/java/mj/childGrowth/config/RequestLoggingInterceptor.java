@@ -28,8 +28,7 @@ public class RequestLoggingInterceptor implements HandlerInterceptor {
         Sex sex = Sex.valueOf(req.getParameter("sex").toUpperCase());
 
         logger.info("Logging Request Parameters in Interceptor: height={}, monthAfterBirth={}, sex={}",
-                req.getParameter("height"), req.getParameter("monthAfterBirth"),
-                req.getParameter("sex"));
+                height, monthAfterBirth, sex);
 
         repository.save(new HeightRangeRequestLog(height, monthAfterBirth, sex));
 
