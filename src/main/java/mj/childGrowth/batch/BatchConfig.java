@@ -2,6 +2,7 @@ package mj.childGrowth.batch;
 
 
 import lombok.RequiredArgsConstructor;
+import mj.childGrowth.application.HeightAggregationService;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @RequiredArgsConstructor
 public class BatchConfig {
+    public final HeightAggregationService service;
     private final JobBuilderFactory jobBuilderFactory;
     private final StepBuilderFactory stepBuilderFactory;
 
@@ -25,7 +27,7 @@ public class BatchConfig {
     @Bean
     public Step tutorialStep() {
         return stepBuilderFactory.get("LogStep")
-                .tasklet(new LogTasklet())
+                .tasklet(new LogTasklet(service))
                 .build();
     }
 }

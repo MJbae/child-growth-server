@@ -40,4 +40,8 @@ public class HeightRequestAggregation {
     @UpdateTimestamp
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    public HeightRequestAggregation(Integer requestTotalCount) {
+        this.requestTotalCount = requestTotalCount;
+    }
 }
