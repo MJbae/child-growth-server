@@ -41,9 +41,12 @@ public class HeightRequestAggregation {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    public HeightRequestAggregation(Integer requestTotalCount, Integer femaleCount, Integer maleCount) {
+    public HeightRequestAggregation(Integer requestTotalCount, Integer femaleCount, Integer maleCount,
+                                    Float monthAverage, Float heightAverage) {
         this.requestTotalCount = requestTotalCount;
         this.femaleCount = femaleCount;
         this.maleCount = maleCount;
+        this.monthAverage = monthAverage;
+        this.heightAverage = heightAverage;
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -40,7 +41,27 @@ public class HeightAnalysisService {
                 .collect(Collectors.toList());
     }
 
-    public int getCountBySex(Sex sex) {
+    public int getCountBy(Sex sex) {
         return logRepository.countBySex(sex);
+    }
+
+    public float calculateMonthAverage(int countAll) {
+        Optional<Float> sumOfMonth = logRepository.addAllMonth();
+
+        if (sumOfMonth.isEmpty() || countAll == 0) {
+            return 0;
+        }
+
+        return sumOfMonth.get() / countAll;
+    }
+
+    public float calculateHeightAverage(int countAll) {
+        Optional<Float> sumOfHeight = logRepository.addAllHeight();
+
+        if (sumOfHeight.isEmpty() || countAll == 0) {
+            return 0;
+        }
+
+        return sumOfHeight.get() / countAll;
     }
 }
