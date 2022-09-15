@@ -10,7 +10,8 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @NoArgsConstructor
-public class HeightRangeRequestLog {
+@Table(name = "height_request_log")
+public class HeightRequestLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +27,7 @@ public class HeightRangeRequestLog {
     @CreationTimestamp
     private LocalDateTime createdAt;
 
-    public HeightRangeRequestLog(Float height, Integer month, Sex sex) {
+    public HeightRequestLog(Float height, Integer month, Sex sex) {
         this.height = height;
         this.month = month;
         this.sex = sex;
