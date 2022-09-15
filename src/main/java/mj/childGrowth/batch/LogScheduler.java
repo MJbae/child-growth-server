@@ -18,7 +18,7 @@ public class LogScheduler {
     private final JobLauncher jobLauncher;
 
     // 5초마다 실행
-    @Scheduled(fixedDelay = 5 * 1000L)
+    @Scheduled(fixedDelay = 10 * 1000L)
     public void executeJob() {
         try {
             jobLauncher.run(

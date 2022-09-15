@@ -37,8 +37,8 @@ DROP TABLE IF EXISTS `growth_analysis`.`height_request_aggregation`;
 CREATE TABLE IF NOT EXISTS `growth_analysis`.`height_request_aggregation`
 (
     `id`          BIGINT     NOT NULL AUTO_INCREMENT,
-    `height_average`       FLOAT NOT NULL,
-    `month_average`       FLOAT NOT NULL,
+    `height_average`       FLOAT  NULL,
+    `month_average`       FLOAT  NULL,
     `request_total_count` INT(11) NULL     DEFAULT NULL,
     `male_count` INT(11) NULL     DEFAULT NULL,
     `female_count` INT(11) NULL     DEFAULT NULL,
