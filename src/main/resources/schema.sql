@@ -19,15 +19,31 @@ CREATE TABLE IF NOT EXISTS `growth_analysis`.`height_analysis`
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
-DROP TABLE IF EXISTS `growth_analysis`.`height_range_request_log`;
+DROP TABLE IF EXISTS `growth_analysis`.`height_request_log`;
 
-CREATE TABLE IF NOT EXISTS `growth_analysis`.`height_range_request_log`
+CREATE TABLE IF NOT EXISTS `growth_analysis`.`height_request_log`
 (
     `id`          BIGINT     NOT NULL AUTO_INCREMENT,
     `height`       FLOAT NOT NULL,
     `month` INT(11) NULL     DEFAULT NULL,
     `created_at`    DATETIME     NULL     DEFAULT NULL,
     `sex`      VARCHAR(255)  NOT NULL DEFAULT 'MALE',
+    PRIMARY KEY (`id`)
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
+
+DROP TABLE IF EXISTS `growth_analysis`.`height_request_aggregation`;
+CREATE TABLE IF NOT EXISTS `growth_analysis`.`height_request_aggregation`
+(
+    `id`          BIGINT     NOT NULL AUTO_INCREMENT,
+    `height_average`       FLOAT NOT NULL,
+    `month_average`       FLOAT NOT NULL,
+    `request_total_count` INT(11) NULL     DEFAULT NULL,
+    `male_count` INT(11) NULL     DEFAULT NULL,
+    `female_count` INT(11) NULL     DEFAULT NULL,
+    `updated_at`    DATETIME     NULL     DEFAULT NULL,
+    `created_at`    DATETIME     NULL     DEFAULT NULL,
     PRIMARY KEY (`id`)
 )
 ENGINE = InnoDB
