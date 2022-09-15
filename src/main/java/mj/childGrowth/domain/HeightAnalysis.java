@@ -5,10 +5,10 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Table(name = "height_analysis")
 @Entity
 @Getter
 @NoArgsConstructor
+@Table(name = "height_analysis")
 public class HeightAnalysis {
     @Id
     @GeneratedValue
