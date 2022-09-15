@@ -2,6 +2,7 @@ package mj.childGrowth.application;
 
 import mj.childGrowth.controller.dto.HeightResponseData;
 import mj.childGrowth.domain.HeightAnalysisRepository;
+import mj.childGrowth.domain.HeightRangeRequestLogRepository;
 import mj.childGrowth.domain.Sex;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,9 +15,11 @@ import java.util.stream.Collectors;
 @Transactional
 public class HeightAnalysisService {
     public final HeightAnalysisRepository repository;
+    public final HeightRangeRequestLogRepository logRepository;
 
-    public HeightAnalysisService(HeightAnalysisRepository repository) {
+    public HeightAnalysisService(HeightAnalysisRepository repository, HeightRangeRequestLogRepository logRepository) {
         this.repository = repository;
+        this.logRepository = logRepository;
     }
 
     public int getRangeIndex(Float height, List<HeightResponseData> range) {
@@ -35,5 +38,9 @@ public class HeightAnalysisService {
                 .stream().map(heightAnalysis -> new HeightResponseData(heightAnalysis.getPercentile(), heightAnalysis.getHeight()))
                 .sorted(Comparator.comparingInt(HeightResponseData::getPercentile))
                 .collect(Collectors.toList());
+    }
+
+    public int getCountBySex(Sex sex) {
+        return logRepository.countBySex(sex);
     }
 }
