@@ -1,6 +1,8 @@
 package mj.childGrowth.batch;
 
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecutionException;
 import org.springframework.batch.core.JobParametersBuilder;
@@ -14,6 +16,7 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 public class LogScheduler {
 
+    private final Logger logger = LoggerFactory.getLogger(getClass());
     private final Job job;
     private final JobLauncher jobLauncher;
 
@@ -28,7 +31,7 @@ public class LogScheduler {
                             .toJobParameters()  // job parameter 설정
             );
         } catch (JobExecutionException ex) {
-            System.out.println(ex.getMessage());
+            logger.info("exception in executing job: {}", ex.getMessage());
             ex.printStackTrace();
         }
     }
