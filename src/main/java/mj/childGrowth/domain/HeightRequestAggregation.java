@@ -41,7 +41,9 @@ public class HeightRequestAggregation {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    public HeightRequestAggregation(Integer requestTotalCount) {
+    public HeightRequestAggregation(Integer requestTotalCount, Integer femaleCount, Integer maleCount) {
         this.requestTotalCount = requestTotalCount;
+        this.femaleCount = femaleCount;
+        this.maleCount = maleCount;
     }
 }
