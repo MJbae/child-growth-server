@@ -1,6 +1,6 @@
 package mj.childGrowth.config;
 
-import mj.childGrowth.domain.HeightRangeRequestLog;
+import mj.childGrowth.domain.HeightRequestLog;
 import mj.childGrowth.domain.HeightRangeRequestLogRepository;
 import mj.childGrowth.domain.Sex;
 import org.slf4j.Logger;
@@ -30,7 +30,7 @@ public class RequestLoggingInterceptor implements HandlerInterceptor {
         logger.info("Logging Request Parameters in Interceptor: height={}, monthAfterBirth={}, sex={}",
                 height, monthAfterBirth, sex);
 
-        repository.save(new HeightRangeRequestLog(height, monthAfterBirth, sex));
+        repository.save(new HeightRequestLog(height, monthAfterBirth, sex));
 
         return true;
     }
