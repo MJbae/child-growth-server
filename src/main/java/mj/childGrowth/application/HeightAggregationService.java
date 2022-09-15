@@ -20,11 +20,13 @@ public class HeightAggregationService {
     }
 
     public void saveAggregation() {
-        int maleCount = analysisService.getCountBySex(Sex.MALE);
-        int femaleCount = analysisService.getCountBySex(Sex.FEMALE);
-        int totalRequest = maleCount + femaleCount;
-//        float monthAverage;
-//        float heightAverage;
-        repository.save(new HeightRequestAggregation(totalRequest, maleCount, femaleCount));
+        int maleCount = analysisService.getCountBy(Sex.MALE);
+        int femaleCount = analysisService.getCountBy(Sex.FEMALE);
+        int totalRequestCount = maleCount + femaleCount;
+        float monthAverage = analysisService.calculateMonthAverage(totalRequestCount);
+        float heightAverage = analysisService.calculateHeightAverage(totalRequestCount);
+
+        repository.save(new HeightRequestAggregation(totalRequestCount, maleCount, femaleCount,
+                monthAverage, heightAverage));
     }
 }
