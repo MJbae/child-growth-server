@@ -1,7 +1,7 @@
 package mj.childGrowth.config;
 
 
-import mj.childGrowth.domain.HeightRangeRequestLog;
+import mj.childGrowth.domain.HeightRequestLog;
 import mj.childGrowth.domain.HeightRangeRequestLogRepository;
 import mj.childGrowth.domain.Sex;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -15,9 +15,6 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @Aspect
 @Component
@@ -41,10 +38,7 @@ public class RequestLoggingAspect {
         Integer monthAfterBirth = Integer.parseInt(req.getParameter("monthAfterBirth"));
         Sex sex = Sex.valueOf(req.getParameter("sex").toUpperCase());
 
-        logger.info("Logging Request Parameters in Interceptor: height={}, monthAfterBirth={}, sex={}",
-                height, monthAfterBirth, sex);
-
-        repository.save(new HeightRangeRequestLog(height, monthAfterBirth, sex));
+        repository.save(new HeightRequestLog(height, monthAfterBirth, sex));
 
         return proceedingJoinPoint.proceed(proceedingJoinPoint.getArgs());
     }
