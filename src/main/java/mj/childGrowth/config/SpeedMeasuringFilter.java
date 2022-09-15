@@ -23,3 +23,4 @@ public class SpeedMeasuringFilter implements Filter {
         logger.info("Speed Measuring Filter: elapsed={}ms", end - start);
     }
 }
+
