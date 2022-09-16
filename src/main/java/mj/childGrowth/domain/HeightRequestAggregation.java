@@ -49,4 +49,13 @@ public class HeightRequestAggregation {
         this.monthAverage = monthAverage;
         this.heightAverage = heightAverage;
     }
+
+    public void updateAll(Integer requestTotalCount, Integer femaleCount, Integer maleCount,
+                          Float monthAverage, Float heightAverage) {
+        this.requestTotalCount = requestTotalCount;
+        this.femaleCount = femaleCount;
+        this.maleCount = maleCount;
+        this.monthAverage = monthAverage;
+        this.heightAverage = heightAverage;
+    }
 }
