@@ -6,13 +6,15 @@ import mj.childGrowth.domain.Sex;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.util.Optional;
+
 @Service
 @Transactional
 public class HeightAggregationService {
-    public final HeightAggregationRepository repository;
+    private final HeightAggregationRepository repository;
 
-    public final HeightAnalysisService analysisService;
-
+    private final HeightAnalysisService analysisService;
 
     public HeightAggregationService(HeightAggregationRepository repository, HeightAnalysisService analysisService) {
         this.repository = repository;
@@ -26,7 +28,18 @@ public class HeightAggregationService {
         float monthAverage = analysisService.calculateMonthAverage(totalRequestCount);
         float heightAverage = analysisService.calculateHeightAverage(totalRequestCount);
 
-        repository.save(new HeightRequestAggregation(totalRequestCount, maleCount, femaleCount,
-                monthAverage, heightAverage));
+        Optional<HeightRequestAggregation> aggregation = repository.findFirstByCreatedAtBefore(LocalDateTime.now());
+
+        if (aggregation.isEmpty()) {
+            repository.save(new HeightRequestAggregation(totalRequestCount, maleCount, femaleCount,
+                    monthAverage, heightAverage));
+            return;
+        }
+
+        HeightRequestAggregation aggregationPresent = aggregation.get();
+        aggregationPresent.updateAll(totalRequestCount, maleCount, femaleCount,
+                monthAverage, heightAverage);
+
+        repository.save(aggregationPresent);
     }
 }
