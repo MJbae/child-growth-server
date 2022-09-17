@@ -28,9 +28,9 @@ jobs:
     - name: Setup MySQL
       uses: mirromutth/mysql-action@v1.1
       with:
-        mysql database: growth_analysis
-        mysql user: tester
-        mysql password: MysqlPolicy@123456
+        mysql database: ${{ secrets.DB_DATABASE }}
+        mysql user: ${{ secrets.DB_USER }}
+        mysql password: ${{ secrets.DB_PASSWORD }}
     - name: Generate Environment Variables File for Production
       run: |
           echo "ls -a . & pwd"
