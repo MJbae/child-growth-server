@@ -29,6 +29,7 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
     - name: Setup MySQL
+      uses: mirromutth/mysql-action@v1.1
       with:
         mysql version: 5.7
         mysql database: ${{ secrets.MYSQL_DATABASE }}
