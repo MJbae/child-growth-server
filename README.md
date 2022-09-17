@@ -1,4 +1,4 @@
-## Child Growth Checking Service
+## Child Growth Checking Service [![CI Status](https://github.com/MJbae/child-growth-server/actions/workflows/production.yml/badge.svg?branch=main)](https://github.com/MJbae/child-growth-server/actions/workflows/production.yml)
 > Check your child is growing as usual by comparing with others height
 ### Output
 * [Service URI](https://www.check-ki.com/)
