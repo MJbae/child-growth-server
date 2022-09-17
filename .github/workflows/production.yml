@@ -33,11 +33,22 @@ jobs:
         mysql password: MysqlPolicy@123456
     - name: Generate Environment Variables File for Production
       run: |
-        echo "DB_URL=$DB_URL" >> env.properties
-        echo "DB_DATABASE=$DB_DATABASE" >> env.properties
-        echo "DB_URL_PARAMS=$DB_URL_PARAMS" >> env.properties
-        echo "DB_USER=$DB_USER" >> env.properties
-        echo "DB_PASSWORD=$DB_PASSWORD" >> env.properties
+          echo "ls -a . & pwd"
+          pwd
+          ls -a .
+          echo "mkdir & touch"
+          mkdir -p ./src/main/resources 
+          cd ./src/main/resources
+          touch ./env.properties
+          pwd
+          ls -a .
+          echo "copy properties"
+          echo "DB_URL=$DB_URL" >> env.properties
+          echo "DB_DATABASE=$DB_DATABASE" >> env.properties
+          echo "DB_URL_PARAMS=$DB_URL_PARAMS" >> env.properties
+          echo "DB_USER=$DB_USER" >> env.properties
+          echo "DB_PASSWORD=$DB_PASSWORD" >> env.properties
+          cat env.properties
       env:
         DB_URL: ${{ secrets.DB_URL }}
         DB_DATABASE: ${{ secrets.DB_DATABASE }}
