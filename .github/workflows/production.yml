@@ -28,7 +28,8 @@ jobs:
     - name: Setup MySQL
       uses: mirromutth/mysql-action@v1.1
       with:
-        mysql user: tester2
+        mysql database: growth_analysis
+        mysql user: tester
         mysql password: MysqlPolicy@123456
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
