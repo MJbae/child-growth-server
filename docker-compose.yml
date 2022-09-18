@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  database:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: growth_analysis
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - 3309:3306
+
+  application:
+      image: gentlemj/child-growth-test:2.0
+      restart: always
+      environment:
+        SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3309/growth_analysis
+        SPRING_DATASOURCE_USERNAME: root
+        SPRING_DATASOURCE_PASSWORD: password
+      ports:
+        - 8080:8080
+      depends_on:
+        - database
