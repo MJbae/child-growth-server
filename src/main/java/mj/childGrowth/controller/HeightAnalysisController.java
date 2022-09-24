@@ -1,6 +1,7 @@
 package mj.childGrowth.controller;
 
 import mj.childGrowth.application.HeightAnalysisService;
+import mj.childGrowth.config.TypeConverter;
 import mj.childGrowth.controller.dto.AnalysisResponseData;
 import mj.childGrowth.controller.dto.HeightResponseData;
 import mj.childGrowth.controller.validator.HeightValidation;
@@ -20,6 +21,7 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:3000")
 public class HeightAnalysisController {
     public final HeightAnalysisService service;
+    public final TypeConverter converter = new TypeConverter();
 
     public HeightAnalysisController(HeightAnalysisService service) {
         this.service = service;
@@ -30,7 +32,7 @@ public class HeightAnalysisController {
                                       @RequestParam @HeightValidation Float height,
                                       @RequestParam @SexValidation String sex) {
 
-        List<HeightResponseData> range = service.showAllBy(monthAfterBirth, height, Sex.valueOf(sex.toUpperCase()));
+        List<HeightResponseData> range = service.showAllBy(monthAfterBirth, height, converter.convert(sex));
         int rangeIndex = service.getRangeIndex(height, range);
 
 
