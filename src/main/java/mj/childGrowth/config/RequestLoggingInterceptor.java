@@ -10,10 +10,12 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.InvalidPropertiesFormatException;
 
 @Component
 public class RequestLoggingInterceptor implements HandlerInterceptor {
     public final HeightRangeRequestLogRepository repository;
+    public final TypeConverter converter = new TypeConverter();
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -25,13 +27,14 @@ public class RequestLoggingInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest req, HttpServletResponse res, Object handler) {
         Float height = Float.parseFloat(req.getParameter("height"));
         Integer monthAfterBirth = Integer.parseInt(req.getParameter("monthAfterBirth"));
-        Sex sex = Sex.valueOf(req.getParameter("sex").toUpperCase());
-
-        logger.info("Logging Request Parameters in Interceptor: height={}, monthAfterBirth={}, sex={}",
-                height, monthAfterBirth, sex);
-
-        repository.save(new HeightRequestLog(height, monthAfterBirth, sex));
-
+        try {
+            Sex sex = converter.convert(req.getParameter("sex"));
+            logger.info("Logging Request Parameters in Interceptor: height={}, monthAfterBirth={}, sex={}",
+                    height, monthAfterBirth, sex);
+            repository.save(new HeightRequestLog(height, monthAfterBirth, sex));
+        } catch (IllegalArgumentException e) {
+            logger.info("Invalid Request Param in Sex");
+        }
         return true;
     }
 }
