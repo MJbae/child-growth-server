@@ -18,7 +18,7 @@ public class MqProducer implements CommandLineRunner {
     @Override
     public void run(String... args) {
         System.out.println("Sending message...");
-        rabbitTemplate.convertAndSend(topicExchange, "foo.bar.baz", "Hello Message!");
+        rabbitTemplate.convertAndSend(topicExchange, "foo.bar.baz", args);
     }
 
 }

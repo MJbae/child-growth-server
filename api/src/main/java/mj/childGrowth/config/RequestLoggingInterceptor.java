@@ -1,5 +1,6 @@
 package mj.childGrowth.config;
 
+import mj.childGrowth.MqProducer;
 import mj.childGrowth.domain.HeightRequestLog;
 import mj.childGrowth.domain.HeightRangeRequestLogRepository;
 import mj.childGrowth.domain.Sex;
@@ -15,26 +16,16 @@ import java.util.InvalidPropertiesFormatException;
 @Component
 public class RequestLoggingInterceptor implements HandlerInterceptor {
     public final HeightRangeRequestLogRepository repository;
-    public final TypeConverter converter = new TypeConverter();
+    public final MqProducer producer;
 
-    private final Logger logger = LoggerFactory.getLogger(getClass());
-
-    public RequestLoggingInterceptor(HeightRangeRequestLogRepository repository) {
+    public RequestLoggingInterceptor(HeightRangeRequestLogRepository repository, MqProducer producer) {
         this.repository = repository;
+        this.producer = producer;
     }
 
     @Override
     public boolean preHandle(HttpServletRequest req, HttpServletResponse res, Object handler) {
-        Float height = Float.parseFloat(req.getParameter("height"));
-        Integer monthAfterBirth = Integer.parseInt(req.getParameter("monthAfterBirth"));
-        try {
-            Sex sex = converter.convert(req.getParameter("sex"));
-            logger.info("Logging Request Parameters in Interceptor: height={}, monthAfterBirth={}, sex={}",
-                    height, monthAfterBirth, sex);
-            repository.save(new HeightRequestLog(height, monthAfterBirth, sex));
-        } catch (IllegalArgumentException e) {
-            logger.info("Invalid Request Param in Sex");
-        }
+        producer.run(req.getParameter("height"), req.getParameter("monthAfterBirth"), req.getParameter("sex"));
         return true;
     }
 }

@@ -1,5 +1,6 @@
 package mj.childGrowth.config;
 
+import mj.childGrowth.MqProducer;
 import mj.childGrowth.domain.HeightRangeRequestLogRepository;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -11,14 +12,16 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfig implements WebMvcConfigurer {
 
     public final HeightRangeRequestLogRepository repository;
+    public final MqProducer producer;
 
-    public WebConfig(HeightRangeRequestLogRepository repository) {
+    public WebConfig(HeightRangeRequestLogRepository repository, MqProducer producer) {
         this.repository = repository;
+        this.producer = producer;
     }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new RequestLoggingInterceptor(repository))
+        registry.addInterceptor(new RequestLoggingInterceptor(repository, producer))
                 .addPathPatterns("/api/height/**");
     }
 
