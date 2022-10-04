@@ -10,16 +10,13 @@ import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
 
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
 public class MqListener {
-
     public final HeightRangeRequestLogRepository repository;
     private final TypeConverter converter = new TypeConverter();
+    private final MessageExtractor extractor = new MessageExtractor();
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private final int HEIGHT = 0;
     private final int MONTH = 1;
@@ -31,7 +28,7 @@ public class MqListener {
 
     @RabbitListener(queues = "cg_q")
     public void receiveMessage(final Message message) {
-        List<String> bodyAsList = extractBodyAsList(message);
+        List<String> bodyAsList = extractor.extractAsList(message);
 
         try {
             Float height = Float.parseFloat(bodyAsList.get(HEIGHT));
@@ -46,14 +43,5 @@ public class MqListener {
         } catch (IllegalArgumentException e) {
             logger.info("Invalid Request Param in Sex Caused by {}", e.getMessage());
         }
-    }
-
-    private List<String> extractBodyAsList(Message message) {
-        String body = new String(message.getBody(), StandardCharsets.UTF_8);
-        body = body.replace("[", "");
-        body = body.replace("]", "");
-        body = body.replaceAll("\"", "");
-
-        return new ArrayList<>(Arrays.asList(body.split(",")));
     }
 }
