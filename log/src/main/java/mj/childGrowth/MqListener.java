@@ -33,16 +33,18 @@ public class MqListener {
     public void receiveMessage(final Message message) {
         List<String> bodyAsList = extractBodyAsList(message);
 
-        Float height = Float.parseFloat(bodyAsList.get(HEIGHT));
-        Integer monthAfterBirth = Integer.parseInt(bodyAsList.get(MONTH));
         try {
+            Float height = Float.parseFloat(bodyAsList.get(HEIGHT));
+            Integer monthAfterBirth = Integer.parseInt(bodyAsList.get(MONTH));
             Sex sex = converter.convert(bodyAsList.get(SEX));
             logger.info("Logging Request Parameters in Interceptor: height={}, monthAfterBirth={}, sex={}",
                     height, monthAfterBirth, sex);
 
             repository.save(new HeightRequestLog(height, monthAfterBirth, sex));
+        } catch (NumberFormatException e) {
+            logger.info("NumberFormatException Caused by {}", e.getMessage());
         } catch (IllegalArgumentException e) {
-            logger.info("Invalid Request Param in Sex");
+            logger.info("Invalid Request Param in Sex Caused by {}", e.getMessage());
         }
     }
 
