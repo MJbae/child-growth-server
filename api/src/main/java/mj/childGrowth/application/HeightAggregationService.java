@@ -1,5 +1,6 @@
 package mj.childGrowth.application;
 
+import mj.childGrowth.ViewAggMqProducer;
 import mj.childGrowth.domain.HeightAggregationRepository;
 import mj.childGrowth.domain.HeightRequestAggregation;
 import mj.childGrowth.domain.Sex;
@@ -15,10 +16,14 @@ public class HeightAggregationService {
     private final HeightAggregationRepository repository;
 
     private final HeightAnalysisService analysisService;
+    private final ViewAggMqProducer producer;
 
-    public HeightAggregationService(HeightAggregationRepository repository, HeightAnalysisService analysisService) {
+    public HeightAggregationService(HeightAggregationRepository repository,
+                                    HeightAnalysisService analysisService,
+                                    ViewAggMqProducer producer) {
         this.repository = repository;
         this.analysisService = analysisService;
+        this.producer = producer;
     }
 
     public void saveAggregation() {
@@ -31,6 +36,7 @@ public class HeightAggregationService {
         Optional<HeightRequestAggregation> aggregation = repository.findFirstByCreatedAtBefore(LocalDateTime.now());
 
         if (aggregation.isEmpty()) {
+            producer.run();
             repository.save(new HeightRequestAggregation(totalRequestCount, maleCount, femaleCount,
                     monthAverage, heightAverage));
             return;
@@ -40,6 +46,7 @@ public class HeightAggregationService {
         aggregationPresent.updateAll(totalRequestCount, maleCount, femaleCount,
                 monthAverage, heightAverage);
 
+        producer.run();
         repository.save(aggregationPresent);
     }
 }

@@ -15,8 +15,30 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitMQConfiguration {
 
     private static final String queueName = "cg_q";
-
     private static final String topicExchangeName = "cg_ex";
+    private static final String aggQueueName = "cg_agg_q";
+
+
+    @Bean
+    Binding binding() {
+        return BindingBuilder
+                .bind(queue())
+                .to(exchange())
+                .with("cg.log.view.#");
+    }
+
+    @Bean
+    Binding aggBinding() {
+        return BindingBuilder
+                .bind(aggQueue())
+                .to(exchange())
+                .with("cg.agg.view.#");
+    }
+
+    @Bean
+    Queue aggQueue() {
+        return new Queue(aggQueueName, false);
+    }
 
     @Bean
     Queue queue() {
@@ -26,11 +48,6 @@ public class RabbitMQConfiguration {
     @Bean
     TopicExchange exchange() {
         return new TopicExchange(topicExchangeName);
-    }
-
-    @Bean
-    Binding binding(Queue queue, TopicExchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange).with("cg.log.view.#");
     }
 
     @Bean

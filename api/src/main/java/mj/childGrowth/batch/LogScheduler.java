@@ -21,7 +21,8 @@ public class LogScheduler {
     private final JobLauncher jobLauncher;
 
     // 하루에 한 번 실행
-    @Scheduled(fixedDelay = 24 * 60 * 60 * 1000L)
+//    @Scheduled(fixedDelay = 24 * 60 * 60 * 1000L)
+    @Scheduled(fixedDelay = 1 * 1 * 10 * 1000L)
     public void executeJob() {
         try {
             jobLauncher.run(
