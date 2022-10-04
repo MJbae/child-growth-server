@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MqProducer implements CommandLineRunner {
 
-    private static final String topicExchange = "spring-boot-exchange";
+    private static final String topicExchange = "cg_ex";
 
     private final RabbitTemplate rabbitTemplate;
 
@@ -18,7 +18,7 @@ public class MqProducer implements CommandLineRunner {
     @Override
     public void run(String... args) {
         System.out.println("Sending message...");
-        rabbitTemplate.convertAndSend(topicExchange, "foo.bar.baz", args);
+        rabbitTemplate.convertAndSend(topicExchange, "cg.log.view.detail", args);
     }
 
 }

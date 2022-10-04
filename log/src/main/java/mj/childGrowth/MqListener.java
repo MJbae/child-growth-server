@@ -29,7 +29,7 @@ public class MqListener {
         this.repository = repository;
     }
 
-    @RabbitListener(queues = "spring-boot")
+    @RabbitListener(queues = "cg_q")
     public void receiveMessage(final Message message) {
         List<String> bodyAsList = extractBodyAsList(message);
 

@@ -14,9 +14,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitMQConfiguration {
 
-    private static final String queueName = "spring-boot";
+    private static final String queueName = "cg_q";
 
-    private static final String topicExchangeName = "spring-boot-exchange";
+    private static final String topicExchangeName = "cg_ex";
 
     @Bean
     Queue queue() {
@@ -30,7 +30,7 @@ public class RabbitMQConfiguration {
 
     @Bean
     Binding binding(Queue queue, TopicExchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange).with("foo.bar.#");
+        return BindingBuilder.bind(queue).to(exchange).with("cg.log.view.#");
     }
 
     @Bean
