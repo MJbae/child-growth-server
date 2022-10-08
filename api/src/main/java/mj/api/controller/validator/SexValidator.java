@@ -4,8 +4,9 @@ package mj.api.controller.validator;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import static mj.api.domain.Sex.FEMALE;
-import static mj.api.domain.Sex.MALE;
+import static mj.core.domain.Sex.FEMALE;
+import static mj.core.domain.Sex.MALE;
+
 
 public class SexValidator implements ConstraintValidator<SexValidation, String> {
 

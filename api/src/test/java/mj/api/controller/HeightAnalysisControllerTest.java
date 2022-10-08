@@ -2,9 +2,8 @@ package mj.api.controller;
 
 import mj.api.MqProducer;
 import mj.api.application.HeightAnalysisService;
-import mj.api.controller.HeightAnalysisController;
 import mj.api.controller.dto.HeightResponseData;
-import mj.api.domain.Sex;
+import mj.core.domain.Sex;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;

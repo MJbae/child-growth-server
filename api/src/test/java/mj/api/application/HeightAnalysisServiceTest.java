@@ -1,9 +1,8 @@
 package mj.api.application;
 
-import mj.api.application.HeightAnalysisService;
 import mj.api.controller.dto.HeightResponseData;
-import mj.api.domain.HeightAnalysis;
 import mj.api.domain.HeightAnalysisRepository;
+import mj.core.domain.HeightAnalysis;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -11,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static mj.api.domain.Sex.MALE;
+import static mj.core.domain.Sex.MALE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
