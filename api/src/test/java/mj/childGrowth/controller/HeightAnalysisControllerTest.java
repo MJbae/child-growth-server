@@ -1,5 +1,6 @@
 package mj.childGrowth.controller;
 
+import mj.childGrowth.MqProducer;
 import mj.childGrowth.application.HeightAnalysisService;
 import mj.childGrowth.controller.dto.HeightResponseData;
 import mj.childGrowth.domain.Sex;
@@ -28,10 +29,10 @@ class HeightAnalysisControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private HeightAnalysisService service;
+    private MqProducer producer;
 
     @MockBean
-    private HeightRangeRequestLogRepository repository;
+    private HeightAnalysisService service;
 
     private final float FIRST_HEIGHT = (float) 167.5;
 

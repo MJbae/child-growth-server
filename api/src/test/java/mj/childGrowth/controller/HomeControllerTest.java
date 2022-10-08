@@ -1,5 +1,6 @@
 package mj.childGrowth.controller;
 
+import mj.childGrowth.MqProducer;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -22,7 +23,7 @@ class HomeControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private HeightRangeRequestLogRepository repository;
+    private MqProducer producer;
 
     private final String REQUEST_URL = "/api";
 
