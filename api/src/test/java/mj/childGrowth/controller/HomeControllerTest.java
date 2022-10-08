@@ -1,6 +1,5 @@
 package mj.childGrowth.controller;
 
-import mj.childGrowth.domain.HeightRangeRequestLogRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

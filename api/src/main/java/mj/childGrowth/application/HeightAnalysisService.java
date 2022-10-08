@@ -2,14 +2,12 @@ package mj.childGrowth.application;
 
 import mj.childGrowth.controller.dto.HeightResponseData;
 import mj.childGrowth.domain.HeightAnalysisRepository;
-import mj.childGrowth.domain.HeightRangeRequestLogRepository;
 import mj.childGrowth.domain.Sex;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service

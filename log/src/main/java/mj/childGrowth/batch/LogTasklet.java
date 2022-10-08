@@ -18,7 +18,7 @@ public class LogTasklet implements Tasklet {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Override
-    public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
+    public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) {
         logger.info("-- Execute Log Aggregation --");
         service.saveAggregation();
         return RepeatStatus.FINISHED;

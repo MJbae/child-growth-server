@@ -3,7 +3,6 @@ package mj.childGrowth.application;
 import mj.childGrowth.controller.dto.HeightResponseData;
 import mj.childGrowth.domain.HeightAnalysis;
 import mj.childGrowth.domain.HeightAnalysisRepository;
-import mj.childGrowth.domain.HeightRangeRequestLogRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
