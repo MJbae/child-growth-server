@@ -1,4 +1,4 @@
-package core.domain;
+package mj.core.domain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
