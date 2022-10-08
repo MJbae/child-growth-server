@@ -3,16 +3,20 @@ package mj.api.controller;
 import mj.api.MqProducer;
 import mj.api.application.HeightAnalysisService;
 import mj.api.controller.dto.HeightResponseData;
+import mj.api.domain.HeightAnalysisRepository;
 import mj.core.domain.Sex;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.transaction.PlatformTransactionManager;
 
 import java.util.List;
 
@@ -29,10 +33,22 @@ class HeightAnalysisControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
+    private HeightAnalysisService service;
+
+    @MockBean
+    private HeightAnalysisRepository repository;
+
+    @MockBean
     private MqProducer producer;
 
     @MockBean
-    private HeightAnalysisService service;
+    private RabbitTemplate rabbitTemplate;
+
+    @MockBean
+    private LocalContainerEntityManagerFactoryBean entityManagerFactoryBean;
+
+    @MockBean
+    private PlatformTransactionManager transactionManager;
 
     private final float FIRST_HEIGHT = (float) 167.5;
 
