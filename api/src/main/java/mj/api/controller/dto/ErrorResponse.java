@@ -1,4 +1,4 @@
-package mj.childGrowth.controller.dto;
+package mj.api.controller.dto;
 
 public class ErrorResponse {
     private final String message;

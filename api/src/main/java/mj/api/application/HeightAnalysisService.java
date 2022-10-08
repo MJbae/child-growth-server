@@ -1,8 +1,8 @@
-package mj.childGrowth.application;
+package mj.api.application;
 
-import mj.childGrowth.controller.dto.HeightResponseData;
-import mj.childGrowth.domain.HeightAnalysisRepository;
-import mj.childGrowth.domain.Sex;
+import mj.api.controller.dto.HeightResponseData;
+import mj.api.domain.HeightAnalysisRepository;
+import mj.api.domain.Sex;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

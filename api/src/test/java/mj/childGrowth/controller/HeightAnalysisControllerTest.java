@@ -1,9 +1,10 @@
 package mj.childGrowth.controller;
 
-import mj.childGrowth.MqProducer;
-import mj.childGrowth.application.HeightAnalysisService;
-import mj.childGrowth.controller.dto.HeightResponseData;
-import mj.childGrowth.domain.Sex;
+import mj.api.MqProducer;
+import mj.api.application.HeightAnalysisService;
+import mj.api.controller.HeightAnalysisController;
+import mj.api.controller.dto.HeightResponseData;
+import mj.api.domain.Sex;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;

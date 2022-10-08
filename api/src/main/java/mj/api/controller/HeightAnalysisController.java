@@ -1,13 +1,12 @@
-package mj.childGrowth.controller;
+package mj.api.controller;
 
-import mj.childGrowth.application.HeightAnalysisService;
-import mj.childGrowth.config.TypeConverter;
-import mj.childGrowth.controller.dto.AnalysisResponseData;
-import mj.childGrowth.controller.dto.HeightResponseData;
-import mj.childGrowth.controller.validator.HeightValidation;
-import mj.childGrowth.controller.validator.MonthValidation;
-import mj.childGrowth.controller.validator.SexValidation;
-import mj.childGrowth.domain.Sex;
+import mj.api.config.TypeConverter;
+import mj.api.controller.validator.HeightValidation;
+import mj.api.controller.validator.MonthValidation;
+import mj.api.controller.validator.SexValidation;
+import mj.api.application.HeightAnalysisService;
+import mj.api.controller.dto.AnalysisResponseData;
+import mj.api.controller.dto.HeightResponseData;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;

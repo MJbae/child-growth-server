@@ -1,4 +1,4 @@
-package mj.childGrowth;
+package mj.api;
 
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.boot.CommandLineRunner;

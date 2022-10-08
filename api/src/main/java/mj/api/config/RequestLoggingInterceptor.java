@@ -1,6 +1,6 @@
-package mj.childGrowth.config;
+package mj.api.config;
 
-import mj.childGrowth.MqProducer;
+import mj.api.MqProducer;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 

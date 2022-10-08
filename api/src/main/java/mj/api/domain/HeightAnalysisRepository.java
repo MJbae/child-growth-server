@@ -1,4 +1,4 @@
-package mj.childGrowth.domain;
+package mj.api.domain;
 
 import org.springframework.data.repository.CrudRepository;
 

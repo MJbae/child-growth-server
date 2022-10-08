@@ -1,4 +1,4 @@
-package mj.childGrowth.controller;
+package mj.api.controller;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;

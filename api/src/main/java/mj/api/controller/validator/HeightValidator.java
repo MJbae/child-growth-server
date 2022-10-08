@@ -1,4 +1,4 @@
-package mj.childGrowth.controller.validator;
+package mj.api.controller.validator;
 
 
 import javax.validation.ConstraintValidator;

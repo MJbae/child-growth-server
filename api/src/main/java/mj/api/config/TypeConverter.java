@@ -1,6 +1,6 @@
-package mj.childGrowth.config;
+package mj.api.config;
 
-import mj.childGrowth.domain.Sex;
+import mj.api.domain.Sex;
 import org.springframework.core.convert.converter.Converter;
 
 public class TypeConverter implements Converter<String, Sex> {

@@ -1,4 +1,4 @@
-package mj.childGrowth.config;
+package mj.api.config;
 
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;

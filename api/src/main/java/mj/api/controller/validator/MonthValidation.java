@@ -1,15 +1,15 @@
-package mj.childGrowth.controller.validator;
+package mj.api.controller.validator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.*;
 
 @Documented
-@Constraint(validatedBy = SexValidator.class)
+@Constraint(validatedBy = MonthValidator.class)
 @Target({ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface SexValidation {
-    String message() default "Invalid Sex";
+public @interface MonthValidation {
+    String message() default "Invalid Month";
 
     Class<?>[] groups() default {};
 

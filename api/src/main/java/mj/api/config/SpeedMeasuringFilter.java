@@ -1,4 +1,4 @@
-package mj.childGrowth.config;
+package mj.api.config;
 
 
 import org.slf4j.Logger;

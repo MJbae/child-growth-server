@@ -1,15 +1,15 @@
-package mj.childGrowth.controller.validator;
+package mj.api.controller.validator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.*;
 
 @Documented
-@Constraint(validatedBy = HeightValidator.class)
+@Constraint(validatedBy = SexValidator.class)
 @Target({ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface HeightValidation {
-    String message() default "Invalid Height";
+public @interface SexValidation {
+    String message() default "Invalid Sex";
 
     Class<?>[] groups() default {};
 

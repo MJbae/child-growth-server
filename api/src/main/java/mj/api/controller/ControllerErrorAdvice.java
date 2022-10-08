@@ -1,6 +1,6 @@
-package mj.childGrowth.controller;
+package mj.api.controller;
 
-import mj.childGrowth.controller.dto.ErrorResponse;
+import mj.api.controller.dto.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
