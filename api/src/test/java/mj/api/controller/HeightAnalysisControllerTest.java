@@ -1,4 +1,4 @@
-package mj.childGrowth.controller;
+package mj.api.controller;
 
 import mj.api.MqProducer;
 import mj.api.application.HeightAnalysisService;

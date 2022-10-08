@@ -1,4 +1,4 @@
-package mj.childGrowth.application;
+package mj.api.application;
 
 import mj.api.application.HeightAnalysisService;
 import mj.api.controller.dto.HeightResponseData;
