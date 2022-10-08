@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @NoArgsConstructor
-@Table(name = "height_request_aggregation")
+@Table(name = "aggregation_height_request", catalog = "log")
 public class HeightRequestAggregation {
 
     @Id

@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @NoArgsConstructor
-@Table(name = "height_request_log")
+@Table(name = "log_height_request", catalog = "log")
 public class HeightRequestLog {
 
     @Id
