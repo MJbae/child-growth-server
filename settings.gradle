@@ -1,3 +1,3 @@
 rootProject.name = 'childGrowth'
-include 'api', 'log'
+include 'core', 'api', 'log'
 
