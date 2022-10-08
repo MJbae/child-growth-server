@@ -19,9 +19,12 @@ CREATE TABLE IF NOT EXISTS `growth_analysis`.`height_analysis`
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
-DROP TABLE IF EXISTS `growth_analysis`.`height_request_log`;
+CREATE SCHEMA IF NOT EXISTS `log` DEFAULT CHARACTER SET utf8mb4;
+USE `log`;
 
-CREATE TABLE IF NOT EXISTS `growth_analysis`.`height_request_log`
+DROP TABLE IF EXISTS `log`.`log_height_request`;
+
+CREATE TABLE IF NOT EXISTS `log`.`log_height_request`
 (
     `id`          BIGINT     NOT NULL AUTO_INCREMENT,
     `height`       FLOAT NOT NULL,
@@ -33,8 +36,8 @@ CREATE TABLE IF NOT EXISTS `growth_analysis`.`height_request_log`
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
-DROP TABLE IF EXISTS `growth_analysis`.`height_request_aggregation`;
-CREATE TABLE IF NOT EXISTS `growth_analysis`.`height_request_aggregation`
+DROP TABLE IF EXISTS `log`.`aggregation_height_request`;
+CREATE TABLE IF NOT EXISTS `log`.`aggregation_height_request`
 (
     `id`          BIGINT     NOT NULL AUTO_INCREMENT,
     `height_average`       FLOAT  NULL,
