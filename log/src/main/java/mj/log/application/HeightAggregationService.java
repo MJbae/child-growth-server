@@ -1,9 +1,9 @@
-package mj.childGrowth.application;
+package mj.log.application;
 
-import mj.childGrowth.domain.HeightAggregationRepository;
-import mj.childGrowth.domain.HeightRangeRequestLogRepository;
-import mj.childGrowth.domain.HeightRequestAggregation;
-import mj.childGrowth.domain.Sex;
+import mj.log.domain.HeightAggregationRepository;
+import mj.log.domain.HeightRangeRequestLogRepository;
+import mj.log.domain.HeightRequestAggregation;
+import mj.log.domain.Sex;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

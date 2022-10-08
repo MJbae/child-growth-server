@@ -1,8 +1,8 @@
-package mj.childGrowth.batch;
+package mj.log.batch;
 
 
 import lombok.RequiredArgsConstructor;
-import mj.childGrowth.application.HeightAggregationService;
+import mj.log.application.HeightAggregationService;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;

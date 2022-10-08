@@ -1,4 +1,4 @@
-package mj.childGrowth.batch;
+package mj.log.batch;
 
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;

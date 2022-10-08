@@ -1,8 +1,8 @@
-package mj.childGrowth.config;
+package mj.log.config;
 
-import mj.childGrowth.domain.HeightRequestLog;
-import mj.childGrowth.domain.HeightRangeRequestLogRepository;
-import mj.childGrowth.domain.Sex;
+import mj.log.domain.HeightRequestLog;
+import mj.log.domain.HeightRangeRequestLogRepository;
+import mj.log.domain.Sex;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -10,7 +10,6 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.InvalidPropertiesFormatException;
 
 @Component
 public class RequestLoggingInterceptor implements HandlerInterceptor {

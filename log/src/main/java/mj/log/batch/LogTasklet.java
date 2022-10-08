@@ -1,6 +1,6 @@
-package mj.childGrowth.batch;
+package mj.log.batch;
 
-import mj.childGrowth.application.HeightAggregationService;
+import mj.log.application.HeightAggregationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.StepContribution;

@@ -1,4 +1,4 @@
-package mj.childGrowth;
+package mj.log;
 
 import org.springframework.amqp.core.Message;
 

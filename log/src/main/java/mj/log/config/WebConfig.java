@@ -1,6 +1,6 @@
-package mj.childGrowth.config;
+package mj.log.config;
 
-import mj.childGrowth.domain.HeightRangeRequestLogRepository;
+import mj.log.domain.HeightRangeRequestLogRepository;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

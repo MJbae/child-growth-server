@@ -1,4 +1,4 @@
-package mj.childGrowth.domain;
+package mj.log.domain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
