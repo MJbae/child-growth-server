@@ -20,7 +20,6 @@ import static org.mockito.Mockito.mock;
 class HeightAnalysisServiceTest {
     private HeightAnalysisService service;
     private final HeightAnalysisRepository repository = mock(HeightAnalysisRepository.class);
-    private final HeightRangeRequestLogRepository logRepository = mock(HeightRangeRequestLogRepository.class);
     private final float FIRST_HEIGHT = (float) 167.5;
     private final float SECOND_HEIGHT = (float) 170.8;
     private final float THIRD_HEIGHT = (float) 174.5;
@@ -31,7 +30,7 @@ class HeightAnalysisServiceTest {
 
     @BeforeEach
     void setUp() {
-        service = new HeightAnalysisService(repository, logRepository);
+        service = new HeightAnalysisService(repository);
     }
 
     @Nested

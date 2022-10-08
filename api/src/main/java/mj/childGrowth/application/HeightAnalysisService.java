@@ -16,11 +16,9 @@ import java.util.stream.Collectors;
 @Transactional
 public class HeightAnalysisService {
     public final HeightAnalysisRepository repository;
-    public final HeightRangeRequestLogRepository logRepository;
 
-    public HeightAnalysisService(HeightAnalysisRepository repository, HeightRangeRequestLogRepository logRepository) {
+    public HeightAnalysisService(HeightAnalysisRepository repository) {
         this.repository = repository;
-        this.logRepository = logRepository;
     }
 
     public int getRangeIndex(Float height, List<HeightResponseData> range) {
@@ -41,27 +39,5 @@ public class HeightAnalysisService {
                 .collect(Collectors.toList());
     }
 
-    public int getCountBy(Sex sex) {
-        return logRepository.countBySex(sex);
-    }
 
-    public float calculateMonthAverage(int countAll) {
-        Optional<Float> sumOfMonth = logRepository.addAllMonth();
-
-        if (sumOfMonth.isEmpty() || countAll == 0) {
-            return 0;
-        }
-
-        return sumOfMonth.get() / countAll;
-    }
-
-    public float calculateHeightAverage(int countAll) {
-        Optional<Float> sumOfHeight = logRepository.addAllHeight();
-
-        if (sumOfHeight.isEmpty() || countAll == 0) {
-            return 0;
-        }
-
-        return sumOfHeight.get() / countAll;
-    }
 }
