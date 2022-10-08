@@ -41,7 +41,7 @@ public class ApiJpaConfiguration {
             EntityManagerFactoryBuilder builder, @Qualifier("apiDataSource") DataSource dataSource) {
         return builder
                 .dataSource(dataSource)
-                .packages("mj.api.domain")
+                .packages(new String[]{"mj.api.domain", "mj.core.domain"})
                 .build();
     }
 
