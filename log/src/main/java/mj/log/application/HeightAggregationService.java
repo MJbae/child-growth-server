@@ -1,9 +1,9 @@
 package mj.log.application;
 
+import mj.core.domain.Sex;
 import mj.log.domain.HeightAggregationRepository;
 import mj.log.domain.HeightRangeRequestLogRepository;
 import mj.log.domain.HeightRequestAggregation;
-import mj.log.domain.Sex;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

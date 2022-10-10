@@ -1,9 +1,10 @@
 package mj.log;
 
-import mj.log.config.TypeConverter;
+import mj.core.domain.Sex;
+import mj.core.utils.MessageExtractor;
+import mj.core.utils.TypeConverter;
 import mj.log.domain.HeightRangeRequestLogRepository;
 import mj.log.domain.HeightRequestLog;
-import mj.log.domain.Sex;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.Message;

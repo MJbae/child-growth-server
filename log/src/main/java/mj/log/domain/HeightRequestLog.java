@@ -2,6 +2,7 @@ package mj.log.domain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import mj.core.domain.Sex;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;

@@ -1,6 +1,6 @@
-package mj.log.config;
+package mj.core.utils;
 
-import mj.log.domain.Sex;
+import mj.core.domain.Sex;
 import org.springframework.core.convert.converter.Converter;
 
 public class TypeConverter implements Converter<String, Sex> {

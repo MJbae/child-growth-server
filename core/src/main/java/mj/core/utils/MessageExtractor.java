@@ -1,4 +1,4 @@
-package mj.log;
+package mj.core.utils;
 
 import org.springframework.amqp.core.Message;
 
