@@ -1,12 +1,12 @@
 package mj.api.controller;
 
-import mj.api.config.TypeConverter;
 import mj.api.controller.validator.HeightValidation;
 import mj.api.controller.validator.MonthValidation;
 import mj.api.controller.validator.SexValidation;
 import mj.api.application.HeightAnalysisService;
 import mj.api.controller.dto.AnalysisResponseData;
 import mj.api.controller.dto.HeightResponseData;
+import mj.core.utils.TypeConverter;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
