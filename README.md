@@ -8,5 +8,6 @@
 ### Technologies Used
 * Application Framework: Java & SpringBoot
 * Database: MySQL & JPA
+* Message Queue: AWS SQS
 ### Deployment Environment
-* Cloud Infra: AWS
+* Cloud Infra: AWS ECS & ECR
