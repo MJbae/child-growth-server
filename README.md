@@ -6,7 +6,7 @@
 * [Service in detail](https://studynote.oopy.io/projects/7)
 * [Web Front Github](https://github.com/welinhong/child-growth-client)
 ### Technologies Used
-* Application Framework: Java & SpringBoot
+* App Framework: Java & SpringBoot
 * Database: MySQL & JPA
 * Message Queue: AWS SQS
 ### Deployment Environment
