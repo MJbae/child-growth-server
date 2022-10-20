@@ -12,6 +12,11 @@ jar {
     enabled = true
 }
 
+bootRun {
+    String activeProfile = System.properties['spring.profiles.active']
+    systemProperty "spring.profiles.active", activeProfile
+}
+
 group = 'mj'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
