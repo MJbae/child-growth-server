@@ -24,7 +24,7 @@ public class HeightAnalysisService {
     }
 
 
-    public AnalysisResponseData showAllBy(Integer monthAfterBirth, String sex, Float height) {
+    public AnalysisResponseData analyzeHeightPosition(Integer monthAfterBirth, String sex, Float height) {
         List<HeightData> heightRange = repository.findAllByMonthAndSex(monthAfterBirth, converter.toSex(sex))
                 .stream().map(HeightData::new)
                 .sorted(Comparator.comparingInt(HeightData::getPercentile))

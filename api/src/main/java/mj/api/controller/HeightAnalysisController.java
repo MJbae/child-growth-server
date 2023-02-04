@@ -27,6 +27,6 @@ public class HeightAnalysisController {
                                             @RequestParam @HeightValidation Float height,
                                             @RequestParam @SexValidation String sex) {
 
-        return service.showAllBy(monthAfterBirth, sex, height);
+        return service.analyzeHeightPosition(monthAfterBirth, sex, height);
     }
 }
