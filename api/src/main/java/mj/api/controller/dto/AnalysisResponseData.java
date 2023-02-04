@@ -8,9 +8,9 @@ import java.util.List;
 public class AnalysisResponseData {
     private final Integer rangeIndex;
 
-    private final List<HeightResponseData> range;
+    private final List<HeightData> range;
 
-    public AnalysisResponseData(Integer rangeIndex, List<HeightResponseData> range) {
+    public AnalysisResponseData(Integer rangeIndex, List<HeightData> range) {
         this.rangeIndex = rangeIndex;
         this.range = range;
     }

@@ -1,6 +1,7 @@
 package mj.api.application;
 
-import mj.api.controller.dto.HeightResponseData;
+import mj.api.controller.dto.AnalysisResponseData;
+import mj.api.controller.dto.HeightData;
 import mj.api.domain.HeightAnalysisRepository;
 import mj.core.utils.TypeConverter;
 import org.springframework.stereotype.Service;
@@ -20,25 +21,28 @@ public class HeightAnalysisService {
         this.repository = repository;
     }
 
-    public int getRangeIndex(Float height, List<HeightResponseData> range) {
+
+    public AnalysisResponseData showAllBy(Integer monthAfterBirth, String sex, Float height) {
+        TypeConverter converter = new TypeConverter();
+
+        List<HeightData> searchResult = repository.findAllByMonthAndSex(monthAfterBirth, converter.toSex(sex))
+                .stream().map(heightAnalysis -> new HeightData(heightAnalysis.getPercentile(), heightAnalysis.getHeight()))
+                .sorted(Comparator.comparingInt(HeightData::getPercentile))
+                .collect(Collectors.toList());
+
+        int range = getRangeIndex(height, searchResult);
+
+        return new AnalysisResponseData(range, searchResult);
+    }
+
+    private int getRangeIndex(Float height, List<HeightData> range) {
         int rangeIndex = 0;
-        for (HeightResponseData analysis : range) {
-            if (analysis.getHeight() > height) {
+        for (HeightData data : range) {
+            if (data.getHeight() > height) {
                 break;
             }
             rangeIndex++;
         }
         return rangeIndex;
     }
-
-    public List<HeightResponseData> showAllBy(Integer monthAfterBirth, String sex) {
-        TypeConverter converter = new TypeConverter();
-
-        return repository.findAllByMonthAndSex(monthAfterBirth, converter.toSex(sex))
-                .stream().map(heightAnalysis -> new HeightResponseData(heightAnalysis.getPercentile(), heightAnalysis.getHeight()))
-                .sorted(Comparator.comparingInt(HeightResponseData::getPercentile))
-                .collect(Collectors.toList());
-    }
-
-
 }

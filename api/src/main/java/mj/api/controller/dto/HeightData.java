@@ -3,12 +3,12 @@ package mj.api.controller.dto;
 import lombok.Getter;
 
 @Getter
-public class HeightResponseData {
+public class HeightData {
     private final Integer percentile;
 
     private final Float height;
 
-    public HeightResponseData(Integer percentile, Float height){
+    public HeightData(Integer percentile, Float height){
         this.percentile = percentile;
         this.height = height;
     }
