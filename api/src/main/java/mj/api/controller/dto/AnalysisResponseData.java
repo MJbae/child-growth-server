@@ -6,12 +6,12 @@ import java.util.List;
 
 @Getter
 public class AnalysisResponseData {
-    private final Integer rangeIndex;
+    private final Integer position;
 
     private final List<HeightData> range;
 
-    public AnalysisResponseData(Integer rangeIndex, List<HeightData> range) {
-        this.rangeIndex = rangeIndex;
+    public AnalysisResponseData(Integer position, List<HeightData> range) {
+        this.position = position;
         this.range = range;
     }
 }
