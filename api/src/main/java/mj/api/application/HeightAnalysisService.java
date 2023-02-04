@@ -35,14 +35,9 @@ public class HeightAnalysisService {
         return new AnalysisResponseData(position, heightRange);
     }
 
-    private int getRangeIndex(Float height, List<HeightData> range) {
-        int rangeIndex = 0;
-        for (HeightData data : range) {
-            if (data.getHeight() > height) {
-                break;
-            }
-            rangeIndex++;
-        }
-        return rangeIndex;
+    private int selectHeightPosition(Float height, List<HeightData> heightRange) {
+        return (int) heightRange.stream()
+                .filter(data -> data.getHeight() <= height)
+                .count();
     }
 }
