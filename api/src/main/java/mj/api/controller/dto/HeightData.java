@@ -1,6 +1,7 @@
 package mj.api.controller.dto;
 
 import lombok.Getter;
+import mj.core.domain.HeightAnalysis;
 
 @Getter
 public class HeightData {
@@ -8,8 +9,8 @@ public class HeightData {
 
     private final Float height;
 
-    public HeightData(Integer percentile, Float height){
-        this.percentile = percentile;
-        this.height = height;
+    public HeightData(HeightAnalysis source){
+        this.percentile = source.getPercentile();
+        this.height = source.getHeight();
     }
 }
