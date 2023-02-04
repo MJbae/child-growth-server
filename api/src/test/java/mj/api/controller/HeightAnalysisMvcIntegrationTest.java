@@ -20,12 +20,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @WebMvcTest(HeightAnalysisController.class)
 @DisplayName("HeightAnalysisController")
-class HeightAnalysisIntegrationTest {
+class HeightAnalysisMvcIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
 
-    @Autowired
+    @MockBean
     private HeightAnalysisService service;
 
     @MockBean
@@ -43,17 +43,14 @@ class HeightAnalysisIntegrationTest {
     @MockBean
     private PlatformTransactionManager transactionManager;
 
-    private final String REQUEST_URL = "/api/height/range";
-
     @Test
     @DisplayName("아이 키 성장 확인 요청 시 유효한 응답을 전달한다")
     void it_responds_with_200_ok() throws Exception {
-        mockMvc.perform(get(REQUEST_URL)
+        mockMvc.perform(get("/api/height/range")
                         .param("monthAfterBirth", "227")
                         .param("sex", "male")
                         .param("height", "179.5")
                 )
                 .andExpect(status().isOk());
     }
-
 }
