@@ -15,24 +15,24 @@ import java.util.stream.Collectors;
 @Transactional
 public class HeightAnalysisService {
 
-    public final HeightAnalysisRepository repository;
+    private final HeightAnalysisRepository repository;
+    private final TypeConverter converter;
 
     public HeightAnalysisService(HeightAnalysisRepository repository) {
         this.repository = repository;
+        this.converter = new TypeConverter();
     }
 
 
     public AnalysisResponseData showAllBy(Integer monthAfterBirth, String sex, Float height) {
-        TypeConverter converter = new TypeConverter();
-
-        List<HeightData> searchResult = repository.findAllByMonthAndSex(monthAfterBirth, converter.toSex(sex))
+        List<HeightData> heightRange = repository.findAllByMonthAndSex(monthAfterBirth, converter.toSex(sex))
                 .stream().map(heightAnalysis -> new HeightData(heightAnalysis.getPercentile(), heightAnalysis.getHeight()))
                 .sorted(Comparator.comparingInt(HeightData::getPercentile))
                 .collect(Collectors.toList());
 
-        int range = getRangeIndex(height, searchResult);
+        int position = selectHeightPosition(height, heightRange);
 
-        return new AnalysisResponseData(range, searchResult);
+        return new AnalysisResponseData(position, heightRange);
     }
 
     private int getRangeIndex(Float height, List<HeightData> range) {
