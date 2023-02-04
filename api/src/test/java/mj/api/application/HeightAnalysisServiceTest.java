@@ -46,7 +46,7 @@ class HeightAnalysisServiceTest {
             }
 
             private List<HeightResponseData> subject() {
-                return service.showAllBy(MONTH_AFTER_BIRTH, HEIGHT_IN_REQUEST, MALE);
+                return service.showAllBy(MONTH_AFTER_BIRTH, "MALE");
             }
 
             @Test
@@ -72,7 +72,7 @@ class HeightAnalysisServiceTest {
             }
 
             private List<HeightResponseData> subject() {
-                return service.showAllBy(MONTH_AFTER_BIRTH, HEIGHT_IN_REQUEST, MALE);
+                return service.showAllBy(MONTH_AFTER_BIRTH, "MALE");
             }
 
             @Test

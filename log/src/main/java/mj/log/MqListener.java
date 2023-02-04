@@ -34,7 +34,7 @@ public class MqListener {
         try {
             Float height = Float.parseFloat(bodyAsList.get(HEIGHT));
             Integer monthAfterBirth = Integer.parseInt(bodyAsList.get(MONTH));
-            Sex sex = converter.convert(bodyAsList.get(SEX));
+            Sex sex = converter.toSex(bodyAsList.get(SEX));
             logger.info("Logging Request Parameters in Interceptor: height={}, monthAfterBirth={}, sex={}",
                     height, monthAfterBirth, sex);
 

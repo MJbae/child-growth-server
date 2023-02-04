@@ -2,7 +2,7 @@ package mj.api.application;
 
 import mj.api.controller.dto.HeightResponseData;
 import mj.api.domain.HeightAnalysisRepository;
-import mj.core.domain.Sex;
+import mj.core.utils.TypeConverter;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 @Service
 @Transactional
 public class HeightAnalysisService {
+
     public final HeightAnalysisRepository repository;
 
     public HeightAnalysisService(HeightAnalysisRepository repository) {
@@ -30,8 +31,10 @@ public class HeightAnalysisService {
         return rangeIndex;
     }
 
-    public List<HeightResponseData> showAllBy(Integer monthAfterBirth, Float height, Sex sex) {
-        return repository.findAllByMonthAndSex(monthAfterBirth, sex)
+    public List<HeightResponseData> showAllBy(Integer monthAfterBirth, String sex) {
+        TypeConverter converter = new TypeConverter();
+
+        return repository.findAllByMonthAndSex(monthAfterBirth, converter.toSex(sex))
                 .stream().map(heightAnalysis -> new HeightResponseData(heightAnalysis.getPercentile(), heightAnalysis.getHeight()))
                 .sorted(Comparator.comparingInt(HeightResponseData::getPercentile))
                 .collect(Collectors.toList());

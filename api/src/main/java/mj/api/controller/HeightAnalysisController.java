@@ -20,7 +20,6 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:3000")
 public class HeightAnalysisController {
     public final HeightAnalysisService service;
-    public final TypeConverter converter = new TypeConverter();
 
     public HeightAnalysisController(HeightAnalysisService service) {
         this.service = service;
@@ -31,9 +30,8 @@ public class HeightAnalysisController {
                                       @RequestParam @HeightValidation Float height,
                                       @RequestParam @SexValidation String sex) {
 
-        List<HeightResponseData> range = service.showAllBy(monthAfterBirth, height, converter.convert(sex));
+        List<HeightResponseData> range = service.showAllBy(monthAfterBirth, sex);
         int rangeIndex = service.getRangeIndex(height, range);
-
 
         return new AnalysisResponseData(rangeIndex, range);
     }

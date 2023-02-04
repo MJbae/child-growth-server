@@ -77,7 +77,7 @@ class HeightAnalysisControllerTest {
             HeightResponseData forthAnalysis = new HeightResponseData(75, FORTH_HEIGHT);
             HeightResponseData fifthAnalysis = new HeightResponseData(90, FIFTH_HEIGHT);
 
-            given(service.showAllBy(MONTH_AFTER_BIRTH, HEIGHT_IN_REQUEST, Sex.MALE))
+            given(service.showAllBy(MONTH_AFTER_BIRTH, "MALE"))
                     .willReturn(List.of(firstAnalysis, secondAnalysis, thirdAnalysis, forthAnalysis, fifthAnalysis));
 
 
